@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.SecurityTokenService;
-using Microsoft.Extensions.Caching.Distributed;
 using StackExchange.Redis;
+using System.Collections.Generic;
 
 namespace BettingRoulette.Controllers
 {
