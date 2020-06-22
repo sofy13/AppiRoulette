@@ -12,7 +12,6 @@ namespace BettingRoulette.Entities
         public Bet()
         {
             NumberBet = -1;
-            StateBet = true;
         }
 
         [Key]
