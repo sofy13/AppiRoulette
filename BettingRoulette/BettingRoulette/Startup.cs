@@ -32,10 +32,6 @@ namespace BettingRoulette
             opt.UseNpgsql($"Host = {DataBaseHost}; Database = {DataBaseName}; Username = {DataBaseUser}; Password = {DataBasePassword}"));
             services.AddControllers();
             services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect($"{CacheHost}"));
-            /*services.AddDistributedRedisCache(options =>
-            {
-                options.Configuration = $"{CacheHost}";
-            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
