@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.SecurityTokenService;
+using Microsoft.EntityFrameworkCore;
 
 namespace BettingRoulette.Business
 {
@@ -54,6 +55,18 @@ namespace BettingRoulette.Business
             {
                 _rouletteContext.Update(roulette);
                 await _rouletteContext.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<List<Roulette>> ListRoulette()
+        {
+            try
+            {
+                return await _rouletteContext.Roulette.ToListAsync();
             }
             catch (Exception)
             {

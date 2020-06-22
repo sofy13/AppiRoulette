@@ -53,5 +53,18 @@ namespace BettingRoulette.Controllers
                 throw;
             }
         }
+
+        [HttpGet("listRoulette")]
+        public async Task<ActionResult<IEnumerable<Roulette>>> ListRoulette()
+        {
+            try
+            {
+                return Ok(await _crudRoulette.ListRoulette());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
