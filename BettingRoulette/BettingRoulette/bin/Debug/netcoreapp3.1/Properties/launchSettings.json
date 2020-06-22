@@ -18,7 +18,8 @@
         "DataBaseUser": "postgres",
         "DataBasePassword": "1234",
         "DataBaseHost": "localhost",
-        "DataBaseName": "roulette"
+        "DataBaseName": "roulette",
+        "CacheHost": "localhost"
       }
     },
     "BettingRoulette": {
@@ -31,7 +32,8 @@
         "DataBaseUser": "postgres",
         "DataBasePassword": "1234",
         "DataBaseHost": "localhost",
-        "DataBaseName": "roulette"
+        "DataBaseName": "roulette",
+        "CacheHost": "localhost"
       }
     }
   }

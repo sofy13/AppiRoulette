@@ -40,3 +40,16 @@ C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Deb
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.dll
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.pdb
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.genruntimeconfig.cache
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.csprojAssemblyReference.cache
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.csproj.CoreCompileInputs.cache
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.MvcApplicationPartsAssemblyInfo.cache
