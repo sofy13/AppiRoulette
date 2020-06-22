@@ -35,8 +35,6 @@ C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Deb
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\BettingRoulette.runtimeconfig.dev.json
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\BettingRoulette.dll
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\BettingRoulette.pdb
-C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.csproj.CoreCompileInputs.cache
-C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.dll
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.pdb
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.genruntimeconfig.cache
