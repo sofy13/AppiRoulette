@@ -1,21 +1,25 @@
 ﻿using BettingRoulette.Context;
 using BettingRoulette.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.SecurityTokenService;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace BettingRoulette.Business
 {
     public class CrudRoulette
     {
         private RouletteContext _rouletteContext;
+        private IConnectionMultiplexer _redisService;
 
-        public CrudRoulette(RouletteContext rouletteContext)
+        public CrudRoulette(RouletteContext rouletteContext, IConnectionMultiplexer redis)
         {
             _rouletteContext = rouletteContext;
+            _redisService = redis;
         }
 
         public async Task<Roulette> CreateRoulette()
@@ -26,6 +30,7 @@ namespace BettingRoulette.Business
                 roulette.StateRoulette = Enumerations.StateRoulette.Cerrado.ToString();
                 _rouletteContext.Roulette.Add(roulette);
                 await _rouletteContext.SaveChangesAsync();
+                await _redisService.GetDatabase().StringSetAsync($"{roulette.IdRoulette}", roulette.StateRoulette);
                 return roulette;
             }
             catch (Exception)
@@ -36,11 +41,12 @@ namespace BettingRoulette.Business
 
         public async Task<string> OpenRoulette(long idRoulette)
         {
-            Roulette roulette = await _rouletteContext.Roulette.FindAsync(idRoulette);
-            if (roulette == null)
+            string statusRoulette = await _redisService.GetDatabase().StringGetAsync($"{idRoulette}");
+            if (String.IsNullOrEmpty(statusRoulette))
                 throw new BadRequestException("No se encontro la ruleta");
-            else if (roulette.StateRoulette.Equals(Enumerations.StateRoulette.Cerrado.ToString()))
+            else if (statusRoulette.Equals(Enumerations.StateRoulette.Cerrado.ToString()))
             {
+                Roulette roulette = await _rouletteContext.Roulette.FindAsync(idRoulette);
                 roulette.StateRoulette = Enumerations.StateRoulette.Abierto.ToString();
                 await UpdateRoulete(roulette);
                 return "Exitoso";
@@ -55,6 +61,7 @@ namespace BettingRoulette.Business
             {
                 _rouletteContext.Update(roulette);
                 await _rouletteContext.SaveChangesAsync();
+                await _redisService.GetDatabase().StringSetAsync($"{roulette.IdRoulette}", roulette.StateRoulette);
             }
             catch (Exception)
             {
@@ -63,19 +70,16 @@ namespace BettingRoulette.Business
         }
         public async Task<string> CloseRoulette(long idRoulette)
         {
-            Roulette roulette = await _rouletteContext.Roulette.FindAsync(idRoulette);
-            if (roulette == null)
+            string statusRoulette = await _redisService.GetDatabase().StringGetAsync($"{idRoulette}");
+            if (string.IsNullOrEmpty(statusRoulette))
                 throw new BadRequestException("No se encontro la ruleta");
-            else if (roulette.StateRoulette.Equals(Enumerations.StateRoulette.Abierto.ToString()))
+            else if (statusRoulette.Equals(Enumerations.StateRoulette.Abierto.ToString()))
             {
+                Roulette roulette = await _rouletteContext.Roulette.FindAsync(idRoulette);
                 roulette.StateRoulette = Enumerations.StateRoulette.Cerrado.ToString();
                 await UpdateRoulete(roulette);
-                long totalAmountBet = await _rouletteContext.Bet
-                    .Where(bet => bet.IdRouletteBet == idRoulette && bet.StateBet == true)
-                    .SumAsync<Bet>(bet => bet.AmountBet);
-                _rouletteContext.Bet
-                    .Where(bet => bet.IdRouletteBet == idRoulette && bet.StateBet == true).ToList()
-                    .ForEach(bet => bet.StateBet = false);
+                var totalAmountBet = await _redisService.GetDatabase().HashGetAsync("RouletteBets", $"{roulette.IdRoulette}");
+                await _redisService.GetDatabase().HashSetAsync("RouletteBets", $"{roulette.IdRoulette}", 0);
                 await _rouletteContext.SaveChangesAsync();
                 return $"Ruleta cerrada, el total de la apuesta fue: {totalAmountBet}";
             }
