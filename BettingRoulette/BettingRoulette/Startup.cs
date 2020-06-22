@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 using System;
 
 
@@ -16,6 +17,7 @@ namespace BettingRoulette
         private static string DataBaseUser = Environment.GetEnvironmentVariable("DataBaseUser");
         private static string DataBasePassword = Environment.GetEnvironmentVariable("DataBasePassword");
         private static string DataBaseName = Environment.GetEnvironmentVariable("DataBaseName");
+        private static string CacheHost = Environment.GetEnvironmentVariable("CacheHost");
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +31,11 @@ namespace BettingRoulette
             services.AddDbContext<RouletteContext>(opt =>
             opt.UseNpgsql($"Host = {DataBaseHost}; Database = {DataBaseName}; Username = {DataBaseUser}; Password = {DataBasePassword}"));
             services.AddControllers();
+            services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect($"{CacheHost}"));
+            /*services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = $"{CacheHost}";
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

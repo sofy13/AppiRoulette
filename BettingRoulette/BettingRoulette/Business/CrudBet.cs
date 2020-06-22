@@ -1,6 +1,8 @@
 ﻿using BettingRoulette.Context;
 using BettingRoulette.Entities;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.IdentityModel.SecurityTokenService;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,11 @@ namespace BettingRoulette.Business
     public class CrudBet
     {
         private RouletteContext _betContext;
-        public CrudBet(RouletteContext betContext)
+        private IConnectionMultiplexer _redisService;
+        public CrudBet(RouletteContext betContext, IConnectionMultiplexer redis)
         {
             _betContext = betContext;
+            _redisService = redis;
         }
         public async Task<Bet> CreateBet(Bet bet)
         {
@@ -23,6 +27,7 @@ namespace BettingRoulette.Business
                 await ValidateRoulette(bet.IdRouletteBet);
                 _betContext.Bet.Add(bet);
                 await _betContext.SaveChangesAsync();
+                await _redisService.GetDatabase().HashIncrementAsync("RouletteBets", $"{bet.IdRouletteBet}", bet.AmountBet);
                 return bet;
             }
             catch (Exception)
@@ -33,10 +38,10 @@ namespace BettingRoulette.Business
 
         private async Task ValidateRoulette(long idRouletteBet)
         {
-            Roulette roulette = await _betContext.Roulette.FindAsync(idRouletteBet);
-            if (roulette == null)
+            string statusRoulette = await _redisService.GetDatabase().StringGetAsync($"{idRouletteBet}");
+            if (String.IsNullOrEmpty(statusRoulette))
                 throw new BadRequestException("No se encontro la ruleta");
-            if (roulette.StateRoulette.Equals(Enumerations.StateRoulette.Cerrado.ToString()))
+            if (statusRoulette.Equals(Enumerations.StateRoulette.Cerrado.ToString()))
                 throw new BadRequestException("La ruleta ya se encuentra cerrada");
         }
 
