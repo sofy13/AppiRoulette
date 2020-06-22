@@ -2,7 +2,6 @@ C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Deb
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\BettingRoulette.exe
-C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.csprojAssemblyReference.cache
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.AssemblyInfoInputs.cache
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.AssemblyInfo.cs
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.RazorTargetAssemblyInfo.cache
