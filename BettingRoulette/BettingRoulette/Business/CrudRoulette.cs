@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.SecurityTokenService;
+using Microsoft.EntityFrameworkCore;
 
 namespace BettingRoulette.Business
 {
@@ -59,6 +60,27 @@ namespace BettingRoulette.Business
             {
                 throw;
             }
+        }
+        public async Task<string> CloseRoulette(long idRoulette)
+        {
+            Roulette roulette = await _rouletteContext.Roulette.FindAsync(idRoulette);
+            if (roulette == null)
+                throw new BadRequestException("No se encontro la ruleta");
+            else if (roulette.StateRoulette.Equals(Enumerations.StateRoulette.Abierto.ToString()))
+            {
+                roulette.StateRoulette = Enumerations.StateRoulette.Cerrado.ToString();
+                await UpdateRoulete(roulette);
+                long totalAmountBet = await _rouletteContext.Bet
+                    .Where(bet => bet.IdRouletteBet == idRoulette && bet.StateBet == true)
+                    .SumAsync<Bet>(bet => bet.AmountBet);
+                _rouletteContext.Bet
+                    .Where(bet => bet.IdRouletteBet == idRoulette && bet.StateBet == true).ToList()
+                    .ForEach(bet => bet.StateBet = false);
+                await _rouletteContext.SaveChangesAsync();
+                return $"Ruleta cerrada, el total de la apuesta fue: {totalAmountBet}";
+            }
+            else
+                return "Denegado";
         }
     }
  }

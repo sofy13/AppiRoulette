@@ -53,5 +53,22 @@ namespace BettingRoulette.Controllers
                 throw;
             }
         }
+
+        [HttpGet("closeRoulette/{idRoulette}")]
+        public async Task<ActionResult<Roulette>> CloseRoulette(long idRoulette)
+        {
+            try
+            {
+                return Ok(await _crudRoulette.CloseRoulette(idRoulette));
+            }
+            catch (BadRequestException exception)
+            {
+                return BadRequest(exception.Message);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
