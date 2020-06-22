@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.SecurityTokenService;
 using StackExchange.Redis;
 using System.Collections.Generic;
-
 namespace BettingRoulette.Controllers
 {
     [ApiController]
@@ -16,15 +15,12 @@ namespace BettingRoulette.Controllers
         private readonly RouletteContext _rouletteContext;
         private readonly IConnectionMultiplexer _redisService;
         private readonly CrudRoulette _crudRoulette;
-
         public RoulettesController(RouletteContext context, IConnectionMultiplexer redis)
         {
             _rouletteContext = context;
             _redisService = redis;
             _crudRoulette = new CrudRoulette(_rouletteContext, _redisService);
         }
-
-
         [HttpGet("createdRoulette")]
         public async Task<ActionResult<Roulette>> AddRoulette()
         {
@@ -38,7 +34,6 @@ namespace BettingRoulette.Controllers
                 throw;
             }
         }
-
         [HttpGet("openRoulette/{idRoulette}")]
         public async Task<ActionResult<Roulette>> OpenRoulette(long idRoulette)
         {
@@ -55,7 +50,6 @@ namespace BettingRoulette.Controllers
                 throw;
             }
         }
-
         [HttpGet("closeRoulette/{idRoulette}")]
         public async Task<ActionResult<Roulette>> CloseRoulette(long idRoulette)
         {
@@ -67,8 +61,7 @@ namespace BettingRoulette.Controllers
             {
                 return BadRequest(exception.Message);
             }
-        }
-        
+        }        
         [HttpGet("listRoulette")]
         public async Task<ActionResult<IEnumerable<Roulette>>> ListRoulette()
         {
