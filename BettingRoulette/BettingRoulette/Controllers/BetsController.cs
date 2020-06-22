@@ -6,7 +6,6 @@ using BettingRoulette.Business;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.SecurityTokenService;
 using StackExchange.Redis;
-
 namespace BettingRoulette.Controllers
 {
     [ApiController]
@@ -15,14 +14,12 @@ namespace BettingRoulette.Controllers
         private readonly RouletteContext _rouletteContext;
         private IConnectionMultiplexer _redisService;
         private readonly CrudBet _crudBet;
-
         public BetsController(RouletteContext context, IConnectionMultiplexer redis)
         {
             _rouletteContext = context;
             _redisService = redis;
             _crudBet = new CrudBet(_rouletteContext, _redisService);
         }
-
         [HttpPost("createdBet")]
         public async Task<ActionResult<Bet>> AddBet(Bet bet)
         {

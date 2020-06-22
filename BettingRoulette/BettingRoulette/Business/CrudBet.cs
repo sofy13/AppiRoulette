@@ -1,13 +1,9 @@
 ﻿using BettingRoulette.Context;
 using BettingRoulette.Entities;
-using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.IdentityModel.SecurityTokenService;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-
 namespace BettingRoulette.Business
 {
     public class CrudBet
@@ -35,16 +31,14 @@ namespace BettingRoulette.Business
                 throw;
             }
         }
-
         private async Task ValidateRoulette(long idRouletteBet)
         {
             string statusRoulette = await _redisService.GetDatabase().StringGetAsync($"{idRouletteBet}");
             if (String.IsNullOrEmpty(statusRoulette))
                 throw new BadRequestException("No se encontro la ruleta");
-            if (statusRoulette.Equals(Enumerations.StateRoulette.Cerrado.ToString()))
+            if (statusRoulette.Equals(EnumerationStateRoulette.StateRoulette.Cerrado.ToString()))
                 throw new BadRequestException("La ruleta ya se encuentra cerrada");
         }
-
         public void ValidateRequestStructure(Bet bet)
         {
             string color = bet.ColorBet != null ? bet.ColorBet.ToString().ToLower() : null;
@@ -59,8 +53,8 @@ namespace BettingRoulette.Business
             if (!(0 <= bet.NumberBet && bet.NumberBet <= 36) && bet.NumberBet != -1)
                 throw new BadRequestException("El número de la apuesta debe estar entre 0 y 36");
             if (color != null)
-                if (!color.Equals(Enumerations.ColorBet.Rojo.ToString().ToLower())
-                && !color.Equals(Enumerations.ColorBet.Negro.ToString().ToLower()))
+                if (!color.Equals(EnumerationColor.ColorBet.Rojo.ToString().ToLower())
+                && !color.Equals(EnumerationColor.ColorBet.Negro.ToString().ToLower()))
                     throw new BadRequestException("El color a apostar debe ser rojo o negro");
         }
     }
