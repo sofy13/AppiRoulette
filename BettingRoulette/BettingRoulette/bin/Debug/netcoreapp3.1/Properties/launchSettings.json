@@ -14,7 +14,11 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DataBaseUser": "postgres",
+        "DataBasePassword": "1234",
+        "DataBaseHost": "localhost",
+        "DataBaseName": "roulette"
       }
     },
     "BettingRoulette": {
@@ -23,7 +27,11 @@
       "launchUrl": "weatherforecast",
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DataBaseUser": "postgres",
+        "DataBasePassword": "1234",
+        "DataBaseHost": "localhost",
+        "DataBaseName": "roulette"
       }
     }
   }
