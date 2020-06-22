@@ -31,6 +31,8 @@ C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Deb
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.AssemblyInfoInputs.cache
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.AssemblyInfo.cs
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.csproj.CoreCompileInputs.cache
+C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.RazorTargetAssemblyInfo.cache
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\BettingRoulette.csproj.CopyComplete
 C:\Users\Sofia\source\repos\AppiRoulette\BettingRoulette\BettingRoulette\obj\Debug\netcoreapp3.1\staticwebassets\BettingRoulette.StaticWebAssets.Manifest.cache

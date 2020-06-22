@@ -68,6 +68,7 @@ namespace BettingRoulette.Business
                 throw;
             }
         }
+        
         public async Task<string> CloseRoulette(long idRoulette)
         {
             string statusRoulette = await _redisService.GetDatabase().StringGetAsync($"{idRoulette}");
@@ -85,6 +86,18 @@ namespace BettingRoulette.Business
             }
             else
                 return "Denegado";
+        }
+
+        public async Task<List<Roulette>> ListRoulette()
+        {
+            try
+            {
+                return await _rouletteContext.Roulette.ToListAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
  }

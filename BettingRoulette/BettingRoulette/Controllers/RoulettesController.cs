@@ -67,6 +67,15 @@ namespace BettingRoulette.Controllers
             {
                 return BadRequest(exception.Message);
             }
+        }
+        
+        [HttpGet("listRoulette")]
+        public async Task<ActionResult<IEnumerable<Roulette>>> ListRoulette()
+        {
+            try
+            {
+                return Ok(await _crudRoulette.ListRoulette());
+            }
             catch (Exception)
             {
                 throw;
