@@ -23,6 +23,5 @@ namespace BettingRoulette.Entities
         public string idUserBet { get; set; }
         public int NumberBet { get; set; }
         public string ColorBet { get; set; }
-        public bool StateBet { get; set; }
     }
 }
