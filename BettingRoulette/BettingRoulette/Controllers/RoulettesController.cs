@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.SecurityTokenService;
 
 namespace BettingRoulette.Controllers
 {
@@ -29,6 +30,23 @@ namespace BettingRoulette.Controllers
             {
                 Roulette roulette = await _crudRoulette.CreateRoulette();
                 return Ok(new { id = roulette.IdRoulette });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet("openRoulette/{idRoulette}")]
+        public async Task<ActionResult<Roulette>> OpenRoulette(long idRoulette)
+        {
+            try
+            {
+                return Ok(await _crudRoulette.OpenRoulette(idRoulette));
+            }
+            catch (BadRequestException exception)
+            {
+                return BadRequest(exception.Message);
             }
             catch (Exception)
             {
